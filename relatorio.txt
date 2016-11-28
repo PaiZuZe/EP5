@@ -1,0 +1,34 @@
+/*Nome:  Victor Chiaradia Gramuglia Araujo
+ *nºUsp: 9793756
+ */
+1.Comentarios de funções:
+
+    1. Verificando se "x" ganhou:
+        Para verificar se o jogo acabou usamos um algoritimo modificado para
+    descobrir se um labirinto possui solução visto em aula. Neste algoritimo
+    iremos percorrer  um extremo (linha 0 ou coluna 0) e colocar todos os
+    vizinhos de cada um deles que já não foram colocados na fila(para saber isso
+    iremos marcar eles) e que possuem uma peça da cor desejada. Agora enquanto a
+    fila não estiver vazia iremos remover um item da fila verificar se ele
+    pertence ao outro extremo, se sim o jogo acabou se não se não iremos colocar
+    seus vizinhos na fila.
+
+    2. Outras funções:
+            As outras funções são relativamente simples, só implementando a fila,
+        o buffer o tabuleiro e vendo vizinhos de peças, assim o comentario sobre
+        elas foi mínimo.
+
+2.Estrategia:
+
+        A ideia por traz dos movimentos feitos pelo EP é tentar atrapalhar o
+    máximo o possivel o inimigo, para isso um vizinho aleatorio da ultima peça
+    jogada sera escolhido, se estivermos jogando contra o preto sera dado maior
+    peso para os vizinhos horizontais.
+        Como este EP tenta só atrapalhar o inimigo uma eventual vitoria pode
+    vir a demorar para ocorrer para ambos os lados, vale resaltar que se usado
+    contra alguem que não sabe jogar muito bem o EP consegue desafiar o usuario.
+
+3. Observação:
+
+        Se o input dado não for um número o programa ira se comportar de tal modo
+    que o programa deve ser parado.

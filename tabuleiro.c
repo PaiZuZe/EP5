@@ -1,77 +1,37 @@
-#include<stdio.h>
+/*Nome:  Victor Chiaradia Gramuglia Araujo
+ *nºUsp: 9793756
+ */
 #include<stdlib.h>
-#include <string.h>
+#include<stdio.h>
 #include"tabuleiro.h"
-#include"pilha.h"
 
-tabuleiro criaTabuleiro()
+tabuleiro criaTab()
 {
-    short int i,j;
-    tabuleiro tab;
-    tab = malloc(14*sizeof(info*));
-    if(!tab){
-        printf("erro de alocação, função criaTabuleiro\n");
-        exit(1);
-    }
-    for(i = 0; i < 14; i++){
-        tab[i] = malloc(14*sizeof(info));
-        for(j = 0; j < 14; j++){
-            tab[i][j].tipoPeca ='-';
-            tab[i][j].visitada = 0;
-            tab[i][j].peso = 0;
-        }
-        if(!tab[i]){
-            printf("erro de alocação, função criaTabuleiro\n");
-            exit(1);
-        }
-    }
-    return tab;
-}
-
-void imprimeTabuleiro(tabuleiro tab)
-{
-    short int i,j,k;
-    for(i = 0; i < 14; i++){
-        for(k = 0; k < i; k++){
-            printf(" ");
-        }
-        for(j = 0; j < 14; j++){
-            printf("%c ", tab[i][j].tipoPeca);
-        }
-        printf("\n");
-    }
-    return;
-}
-
-void destroiTabuleiro(tabuleiro tab)
-{
-    short int i;
-    for(i = 0; i < 14; i++){
-        free(tab[i]);
-    }
-    free(tab);
-    return;
-}
-
-int pretoGanhou(tabuleiro tab)
-{
-    int i,j;
-    int start[14];
-    pilha *stack;
-    j = 0;
+    tabuleiro Tab;
+    int i, j;
+    Tab = malloc(14*sizeof(celula *));
+    for(i = 0; i < 14; i++) Tab[i] = malloc(14*sizeof(celula));
     for(i = 0; i < 14; i++)
-        start[j] = -1;
-        if(!strcmp((&(tab[i][0]).tipoPeca), "p")){
-            start[j] = i;
+        for(j = 0; j < 14; j++) {
+            Tab[i][j].tipo = '-';
+            Tab[i][j].visto = 0;
         }
-    if(start[0] == -1) return 0;
-    stack = criaPilha();
-    i = 0;
-    while(start[i] != -1){
-        empilha(stack, start[i], 0);
-        /*while(coloca o prim vizinho, dps faz isso pro prim vizinho desse cara){
+    return Tab;
+}
 
-        }*/
+void destroiTab(tabuleiro Tab)
+{
+    int i;
+    for(i = 0; i < 14; i++) free(Tab[i]);
+    free(Tab);
+}
+
+void imprimeTab(tabuleiro Tab)
+{
+    int i, j;
+    for(i = 0; i < 14; i++) {
+        for(j = 0; j < i; j++) fprintf(stderr, " ");
+        for(j = 0; j < 14; j++)  fprintf(stderr, "%c ", Tab[i][j].tipo);
+        fprintf(stderr, "\n");
     }
-    return 1;
 }
